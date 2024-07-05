@@ -14,10 +14,13 @@ return {
     { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
   },
   opts = {
+    enable_git_status = true,
     filesystem = {
       window = {
         mappings = {
           ['\\'] = 'close_window',
+          ['<Left>'] = 'close_node', -- Use left arrow to close folders
+          ['<Right>'] = 'open', -- Use right arrow to open folders
         },
       },
     },

@@ -3,11 +3,28 @@
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Open NerdTree when openning NeoVIM by default
+-- vim.cmd [[
+--   augroup OpenNeoTreeOnStartup
+--     autocmd!
+--     autocmd VimEnter * if isdirectory(expand('%')) | exe 'Neotree reveal' | endif
+--   augroup END
+-- ]]
+--
+
+vim.api.nvim_create_augroup('auto_save_on_switch', { clear = true })
+
+vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost' }, {
+  group = 'auto_save_on_switch',
+  pattern = '*',
+  command = 'silent! wa',
+})
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -34,7 +51,7 @@ vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
-vim.opt.updatetime = 250
+vim.opt.updatetime = 200
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
@@ -57,6 +74,15 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 16
+
+-- Color scheme
+vim.o.termguicolors = true
+
+-- Set filetype for MLIR files
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*.mlir' },
+  command = 'set filetype=mlir',
+})
 
 -- vim: ts=2 sts=2 sw=2 et
