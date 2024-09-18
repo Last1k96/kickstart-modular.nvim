@@ -42,6 +42,8 @@ vim.keymap.set('n', '<C-Right>', '<C-w><C-l>', { desc = 'Move focus to the right
 vim.keymap.set('n', '<C-Down>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-Up>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', '<leader>bc', ':%bd | e#<CR>', { desc = 'Close all buffers except current one' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -57,9 +59,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Move selected lines down
-vim.keymap.set('v', '<C-Up>', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', '<C-Up>', ":m '<-2<CR>gv=gv")
 -- Move selected lines up
-vim.keymap.set('v', '<C-Down>', ":m '<-2<CR>gv=gv")
+vim.keymap.set('v', '<C-Down>', ":m '>+1<CR>gv=gv")
 
 -- File should contain vim.g.jira_url_prefix = "https://prefix_link_path"
 local link_path = vim.fn.expand '~/code/nvim/jira_link.lua'
@@ -88,5 +90,13 @@ vim.keymap.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 vim.keymap.set({ 'n' }, '<C-k>', function()
   require('lsp_signature').toggle_float_win()
 end, { silent = true, noremap = true, desc = 'toggle signature' })
+
+-- Yank the full file path
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>yp',
+  ':let @+ = expand("%:p")<CR>',
+  { desc = 'Copy full file path', noremap = true, silent = true }
+)
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -20,6 +20,18 @@ vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost' }, {
   command = 'silent! wa',
 })
 
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('lsp', { clear = true }),
+  callback = function(args)
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      buffer = args.buf,
+      callback = function()
+        vim.lsp.buf.format { async = false, id = args.data.client_id }
+      end,
+    })
+  end,
+})
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -78,6 +90,9 @@ vim.opt.scrolloff = 16
 
 -- Color scheme
 vim.o.termguicolors = true
+
+-- Set nowrap
+vim.o.wrap = false
 
 -- Set filetype for MLIR files
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {

@@ -9,11 +9,11 @@ return {
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {} },
+      { 'folke/neodev.nvim',       opts = {} },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -157,10 +157,16 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {
-
-          --= {
-          --'--compile-commands-dir=/home/mkurin/code/openvino/build-x86_64/RelWithDebInfo',
-          --},
+          cmd = {
+            -- see clangd --help-hidden
+            'clangd-17',
+            '--background-index',
+            '--clang-tidy',
+            '--completion-style=detailed',
+            '--cross-file-rename',
+            '--header-insertion=iwyu',
+            '--pch-storage=memory',
+          },
         },
         -- gopls = {},
         -- pyright = {},
