@@ -159,13 +159,15 @@ return {
         clangd = {
           cmd = {
             -- see clangd --help-hidden
-            'clangd-17',
+            'clangd-19',
             '--background-index',
             '--clang-tidy',
-            '--completion-style=detailed',
+            '--completion-parse=auto',
             '--cross-file-rename',
             '--header-insertion=iwyu',
             '--pch-storage=memory',
+            '-j',
+            '24',
           },
         },
         -- gopls = {},
