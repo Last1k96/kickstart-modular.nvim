@@ -49,7 +49,7 @@ require('lazy').setup({
 
   -- require 'kickstart/plugins/treesitter',
 
-  require 'custom/plugins/lazygit',
+  -- require 'custom/plugins/lazygit',
 
   require 'custom/plugins/neogit',
 
