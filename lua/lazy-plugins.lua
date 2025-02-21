@@ -49,7 +49,9 @@ require('lazy').setup({
 
   -- require 'kickstart/plugins/treesitter',
 
-  require 'custom/plugins/lazy',
+  require 'custom/plugins/lazygit',
+
+  require 'custom/plugins/neogit',
 
   require 'custom/plugins/vim-lastplace',
 

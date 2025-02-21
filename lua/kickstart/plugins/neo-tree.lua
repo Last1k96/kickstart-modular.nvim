@@ -61,8 +61,9 @@ return {
         mappings = {
           ['\\'] = 'close_window',
           ['<Left>'] = 'close_node', -- Use left arrow to close folders
-          ['<Right>'] = 'open',      -- Use right arrow to open folders
+          ['<Right>'] = 'open', -- Use right arrow to open folders
           ['Y'] = copy_path,
+          ['u'] = 'navigate_up',
         },
       },
     },

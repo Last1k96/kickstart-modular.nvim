@@ -91,12 +91,7 @@ vim.keymap.set({ 'n' }, '<C-k>', function()
   require('lsp_signature').toggle_float_win()
 end, { silent = true, noremap = true, desc = 'toggle signature' })
 
--- Yank the full file path
-vim.api.nvim_set_keymap(
-  'n',
-  '<leader>yp',
-  ':let @+ = expand("%:p")<CR>',
-  { desc = 'Copy full file path', noremap = true, silent = true }
-)
+-- -- Disable q: in normal mode
+vim.keymap.set('n', 'q:', '<Nop>')
 
 -- vim: ts=2 sts=2 sw=2 et
