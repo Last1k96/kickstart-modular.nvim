@@ -18,6 +18,10 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 
 vim.keymap.set('n', '<leader>yj', ':echo test')
 
+-- -9
+vim.keymap.set({ 'n', 'x' }, '<C-g>', '<C-a>', { silent = true, desc = 'Increment number(s)' })
+vim.keymap.set('i', '<C-g>', '<C-o><C-x>', { silent = true })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.

@@ -47,6 +47,7 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
+--  vim.opt.clipboard
 vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
@@ -93,6 +94,18 @@ vim.o.termguicolors = true
 
 -- Set nowrap
 vim.o.wrap = false
+
+-- Use spaces, not tabs
+vim.opt.expandtab = true
+
+-- A <Tab> in the file is displayed as 4 spaces
+vim.opt.tabstop = 4
+
+-- Indents (>>, <<, auto-indent) use 4 spaces
+vim.opt.shiftwidth = 4
+
+-- Edit as if a tabstop of 4
+vim.opt.softtabstop = 4
 
 -- Set filetype for MLIR files
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
