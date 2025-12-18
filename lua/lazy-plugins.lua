@@ -63,9 +63,9 @@ require('lazy').setup({
 
   require 'custom/plugins/toggleterm',
 
-  require 'custom/plugins/vim-cmake',
+  -- require 'custom/plugins/vim-cmake',
 
-  require 'custom/plugins/codesnap',
+  -- require 'custom/plugins/codesnap',
 
   require 'custom/plugins/local-highlight',
 
